@@ -1,14 +1,14 @@
 
 import Products from '../../components/PageComponents/Products'
-import CompTry from '../../components/PageComponents/CompTry'
 import MainLayout from '../../components/LayoutComponents/MainLayout'
 import Footer from '../../components/PageComponents/Footer'
+import Ourstory from '../../components/PageComponents/Ourstory'
 
 export default function Home() {
 
   const Landing = () =>{
     return(
-      <div className="w-full h-[100vh] flex flex-row justify-center items-center bg-no-repeat bg-cover bg-[url('https://media.istockphoto.com/id/1206800961/photo/online-shopping-and-payment-man-using-tablet-with-shopping-cart-icon-digital-marketing.jpg?b=1&s=612x612&w=0&k=20&c=mwZYTXRUffNG-igVygp49KPbBT4Dp0va1MxomnP3j9M=')]">
+      <div className="w-full h-[100vh] flex flex-row justify-center items-center bg-no-repeat bg-cover bg-fixed bg-[url('https://media.istockphoto.com/id/1206800961/photo/online-shopping-and-payment-man-using-tablet-with-shopping-cart-icon-digital-marketing.jpg?b=1&s=612x612&w=0&k=20&c=mwZYTXRUffNG-igVygp49KPbBT4Dp0va1MxomnP3j9M=')]">
         <div>
           <h4 className='text-1xl m-5 text-gray-700 text-center'>WELCOME TO THE ATHORSTORE</h4>
           <h1 className='text-5xl text-gray-500 text-center'>Let's Bring the Spring to Your Home</h1>
@@ -24,7 +24,7 @@ export default function Home() {
       <Landing/>
       <main className="flex min-h-screen flex-col items-center justify-between md:p-4">
         <Products/>
-        <CompTry/>
+        <Ourstory/>
       </main>
       <Footer/>
     </MainLayout>
