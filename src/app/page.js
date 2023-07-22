@@ -1,5 +1,6 @@
 
 import Products from '../../components/PageComponents/Products'
+import Sponsers from '../../components/PageComponents/Sponsers'
 import CompTry from '../../components/PageComponents/CompTry'
 import MainLayout from '../../components/LayoutComponents/MainLayout'
 import Footer from '../../components/PageComponents/Footer'
@@ -25,6 +26,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-between md:p-4">
         <Products/>
         <CompTry/>
+        <Sponsers/>
       </main>
       <Footer/>
     </MainLayout>
