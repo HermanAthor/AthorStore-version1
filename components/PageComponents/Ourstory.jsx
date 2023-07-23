@@ -5,9 +5,9 @@ import React from 'react'
 const Ourstory = () => {
   return (
     <Grid container spacing={2}>
-        <Grid item xs={12}>
-            <Box>
-                <Typography className=" items-center" variant='h2'> Why shop with us</Typography>
+        <Grid item xs={12} className='flex justify-center items-center content-center'>
+            <Box className="mx-auto">
+                <Typography className=" mx-auto" variant='h2'> Why shop with us</Typography>
             </Box>
         </Grid>
         <Grid item xs={12} md={6}>

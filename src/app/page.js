@@ -25,7 +25,8 @@ export default function Home() {
       <Landing/>
       <main className="flex min-h-screen flex-col items-center justify-between md:p-4">
         <Products/>
-        <CompTry/>
+        <Ourstory/>
+        <Sponsers/>
       </main>
       <Footer/>
     </MainLayout>
