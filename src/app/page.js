@@ -4,6 +4,7 @@ import Sponsers from '../../components/PageComponents/Sponsers'
 import MainLayout from '../../components/LayoutComponents/MainLayout'
 import Footer from '../../components/PageComponents/Footer'
 import Ourstory from '../../components/PageComponents/Ourstory'
+import Testimonials from '../../components/PageComponents/Testmonials'
 
 export default function Home() {
 
@@ -23,12 +24,12 @@ export default function Home() {
   return (
     <MainLayout>
       <Landing/>
-      <main className="flex min-h-screen flex-col items-center justify-between md:p-4">
+      <div className="flex min-h-screen flex-col items-center justify-between md:p-4">
         <Products/>
         <Ourstory/>
         <Sponsers/>
-      </main>
-      <Footer/>
+        <Testimonials/>
+      </div>
     </MainLayout>
   )
 }
