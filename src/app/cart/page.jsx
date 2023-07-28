@@ -1,13 +1,60 @@
+"use client"
 import React from 'react'
+import MainLayout from '../../../components/LayoutComponents/MainLayout'
+import { Container, Grid } from '@mui/material'
 
 const CartPage = () => {
   return (
-    <div>
-      <p> 
-        In literary theory, a text is any object that can be "read", whether this object is a work of literature, a street sign, an arrangement of buildings on a city block, or styles of clothing. It is a coherent set of signs that transmits some kind of informative message. This set of signs is considered in terms of the informative message's content, rather than in terms of its physical form or the medium in which it is represented. Within the field of literary criticism, "text" also refers to the original information content of a particular piece of writing; that is, the "text" of a work is that primal symbolic arrangement of letters as originally composed, apart from later alterations, deterioration, commentary, translations, paratext, etc. Therefore, when literary criticism is concerned with the determination of a "text", it is concerned with the distinguishing of the original information content from whatever has been added to or subtracted from that content as it appears in a given textual document (that is, a physical representation of text). Since the history of writing predates the concept of the "text", most texts were not written with this concept in mind. Most written works fall within a narrow range of the types described by text theory. The concept of "text" becomes relevant if and when a "coherent written message is completed and needs to be referred to independently of the circumstances in which it was created." (en)
-      </p>
-    </div>
+    <MainLayout>
+      <Container>
+        <Grid container className='flex w-full flex-row justify-between items-center content-center md:bg-white md:h-56 mt-24 rounded-lg'>
+          <Grid item xs={12} md={2}>
+            <div className=' flex md:justify-center md:items-center content-center rounded-lg'>
+              <img className='h-56 w-56 object-cover rounded-lg' src="https://images.pexels.com/photos/2946956/pexels-photo-2946956.jpeg?auto=compress&cs=tinysrgb&w=600" alt="shoe" />
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <div className='flex flex-row md:flex-col md:ml-4 md:mb-4 gap-10'>
+              <p>Price <span className='md:hidden'>:</span></p>
+              <p>DKK 300</p>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <div className='flex flex-row md:flex-col md:ml-4 md:mb-4 gap-10'>
+              <p>Product <span className='md:hidden'>:</span></p>
+              <p>Sweater</p>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <div className='flex flex-row md:flex-col md:ml-4 md:mb-4 gap-10'>
+              <p>Quantity <span className='md:hidden'>:</span></p>
+              <div className='flex flex-row border border-black justify-between items-center'>
+                <button className='border border-black items-center content-center w-full sm:py-4 sm:px-4'>-</button>
+                <div className='border flex justify-center border-black items-center content-center w-full sm:py-4 sm:px-4'><p className='items-center'>2</p></div>
+                <button className='border border-black items-center content-center w-full sm:py-4 sm:px-4'>+</button>
+              </div>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <div className='flex flex-row md:flex-col md:ml-6 md:mb-4 gap-10'>
+              <p>Total <span className='md:hidden'>:</span></p>
+              <p>300</p>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}>
+            <button>clear Cart</button>
+          </Grid>
+          
+        </Grid>
+        
+      </Container>
+    </MainLayout>
   )
 }
 
 export default CartPage
+
+//className='flex flex-row justify-between items-center content-center bg-white h-56 mt-24 rounded-lg'
+//<div className=' flex justify-center items-center content-center rounded-lg'>
+//<img className='h-56 w-56 object-cover rounded-lg' src="https://images.pexels.com/photos/2946956/pexels-photo-2946956.jpeg?auto=compress&cs=tinysrgb&w=600" alt="shoe" />
+//</div>

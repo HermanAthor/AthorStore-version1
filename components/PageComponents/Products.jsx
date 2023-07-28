@@ -1,17 +1,14 @@
 "use client"
+import { getProducts } from '@/api/utils'
 import { Box, Card, CardActions, CardContent, CardHeader, CardMedia, Container, Grid, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
-import {use} from 'react'
+//import {use} from 'react'
 
-async function getProducts (){
-    const res = await fetch('https://fakestoreapi.com/products')
-    const products = res.json()
-    return await products
-}
 
-export default function Products() {
-    const allProducts = use(getProducts())
+
+export default async function Products() {
+    const allProducts = await getProducts()
   return (
     <Container>
       <Box><Typography variant='h2' className=' font-sans'>Sample products</Typography></Box>
@@ -43,8 +40,7 @@ function Product(product) {
           </CardContent>
           <CardActions>
             <Link 
-              href="/home/[productDetails]"
-              as={`/home/productDetails`}
+              href={`/home/${product.id}`}
               className='bg-gray-400 hover:bg-gray-500 rounded-full p-2'
             >
               View Product
