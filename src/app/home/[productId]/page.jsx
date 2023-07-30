@@ -3,14 +3,20 @@ import { Box, Button, Container, Grid, Typography } from '@mui/material'
 import MainLayout from '../../../../components/LayoutComponents/MainLayout'
 //import Detailcorousel from '../../../../components/Detailcorousel'
 import { getProductsDetails } from '@/api/utils'
+import { useContext } from 'react'
+import { CartContext } from '@/context/cart'
 
 
-export default async function Details({params:{productId}}) {
-    const detailsData = await getProductsDetails(productId)
+
+
+
+export default async function Details({params}) {
+    
+    const detailsData = await getProductsDetails(params.productId)
 
   return (
     <>
-        <ProductDetails details={detailsData}/>
+        <ProductDetails details={detailsData} />
 
         {/* <p>{detailsData.title}</p> */}
     </>
@@ -24,6 +30,7 @@ export default async function Details({params:{productId}}) {
 
 
 const ProductDetails =  ({details}) => {
+    const {addToCart}= useContext(CartContext)
     
   
   return (
@@ -59,7 +66,7 @@ const ProductDetails =  ({details}) => {
                             <Box className="flex flex-row ">
                                 <Box className="p-2 m-2">1</Box>
                                 <Box>
-                                    <Button variant='outlined' color='secondary'>Add to Cart</Button>
+                                    <Button onClick={()=>addToCart(details)} variant='outlined' color='secondary'>Add to Cart</Button>
                                 </Box>
                             </Box>
                         </Box>

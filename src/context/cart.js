@@ -1,12 +1,16 @@
 
-import { createContext, useState, useEffect,} from "react";
+"use client"
+import { createContext, useState,} from "react";
 
 export const CartContext = createContext()
 
 export const CartProvider = ({children})=>{
     const [cartItems, setCartItems] = useState([])
+    console.log('cartItems: ', cartItems)
 
     const addToCart = (item)=>{
+        console.log('cartItems', cartItems)
+        console.log('item', item )
         const isItemInCart = cartItems.find((cartItem)=> cartItem.id === item.id)
         
         if(isItemInCart){
@@ -19,6 +23,7 @@ export const CartProvider = ({children})=>{
         }else{
             setCartItems(...cartItems, {...item, quantity:1})
         }
+        
     }
     const removeFromCart = (item)=>{
         const isItemInCart = cartItems.find((cartItem)=> cartItem.id === item.id)
