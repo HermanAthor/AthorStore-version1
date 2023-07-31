@@ -2,7 +2,7 @@
 "use client"
 import { createContext, useState,} from "react";
 
-export const CartContext = createContext()
+const CartContext = createContext()
 
 export const CartProvider = ({children})=>{
     const [cartItems, setCartItems] = useState([])
@@ -11,7 +11,7 @@ export const CartProvider = ({children})=>{
     const addToCart = (item)=>{
         console.log('cartItems', cartItems)
         console.log('item', item )
-        const isItemInCart = cartItems.find((cartItem)=> cartItem.id === item.id)
+        const isItemInCart = cartItems?.find((cartItem)=> cartItem.id === item.id)
         
         if(isItemInCart){
             setCartItems(
@@ -21,7 +21,7 @@ export const CartProvider = ({children})=>{
                 : cartItem)
             )
         }else{
-            setCartItems(...cartItems, {...item, quantity:1})
+            setCartItems([...cartItems, {...item, quantity:1}])
         }
         
     }
@@ -61,3 +61,5 @@ export const CartProvider = ({children})=>{
         </CartContext.Provider>
     )
 }
+
+export default CartContext

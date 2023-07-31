@@ -2,7 +2,8 @@
 import React, { useContext } from 'react'
 import MainLayout from '../../../components/LayoutComponents/MainLayout'
 import { Container, Grid } from '@mui/material'
-import { CartContext } from '@/context/cart'
+import CartContext from '@/context/cart'
+
 
 
 const CartPage = () => {
@@ -10,7 +11,7 @@ const CartPage = () => {
   return (
     <MainLayout>
       <Container>
-         {cartItems.map((item)=>{
+         {cartItems?.map((item)=>{
          return <Cart item={item}/>
          })
          }
@@ -52,7 +53,7 @@ const Cart = (item)=>{
           <Grid item xs={12} md={2}>
             <div className='grid gap-x-1 md:gap-x-10 md:space-x-5 md:space-y-5 space-y-4 font-semibold grid-cols-2 md:grid-cols-1 items-center'>
               <p>Total <span className='md:hidden'>:</span></p>
-              <p>{ getCartTotal() }</p>
+              <p>{'total'}</p>
             </div>
           </Grid>
           {/* <Grid item xs={12} md={2}>

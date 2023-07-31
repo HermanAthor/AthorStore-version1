@@ -1,8 +1,10 @@
 "use client"
 import { getProducts } from '@/api/utils'
-import { Box, Card, CardActions, CardContent, CardHeader, CardMedia, Container, Grid, Typography } from '@mui/material'
+import CartContext from '@/context/cart'
+import { Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Container, Grid, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
+import { useContext } from 'react'
 //import {use} from 'react'
 
 
@@ -22,6 +24,7 @@ export default async function Products() {
   )
 }
 function Product(product) {
+  const {addToCart}= useContext(CartContext)
   return(
     <Grid item xs={12} sm={6} md={4} key={product.id}>
       <Box className="flex flex-col h-full">
@@ -45,6 +48,9 @@ function Product(product) {
             >
               View Product
             </Link>
+            <Box>
+              <Button onClick={()=> addToCart(product)} variant='outlined' color='secondary'>Add to Cart</Button>
+            </Box>
           </CardActions>
         </Card>
       </Box>
