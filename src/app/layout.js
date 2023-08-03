@@ -2,7 +2,8 @@
 import 'tailwindcss/tailwind.css'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import GlobalProvider from '@/provider/GlobalProvider'
+import RecoilProvider from '@/context/RecoilProvider'
+
 
 
 
@@ -16,10 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>        
-          <GlobalProvider>
-            {children}
-          </GlobalProvider>    
+      <body className={inter.className}>                 
+       <RecoilProvider>{children}</RecoilProvider>
+             
       </body>
     </html>
   )
