@@ -4,21 +4,37 @@ import { cartState } from "@/context/CartContext/cartContext";
 import { useRecoilState } from "recoil";
 import MainLayout from "../LayoutComponents/MainLayout";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { useEffect } from "react";
 
 const ProductDetails = ({ product }) => {
-  const [cartItem, setCartItem] = useRecoilState(cartState);
+  const [cartItems, setCartItems] = useRecoilState(cartState);
 
-  const addItemsToCart = () => {
-    if (cartItem.findIndex((pro) => pro.id === product.id) === -1) {
-      setCartItem((prevState) => [...prevState, product]);
+  useEffect(() => {
+    const data = localStorage.getItem("cartItems");
+    if (data) {
+      setCartItems(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const addToCart = (product) => {
+    const isItemInCart = cartItems.find(
+      (cartItem) => cartItem.id === product.id
+    );
+
+    if (isItemInCart) {
+      setCartItems(
+        cartItems.map((cartItem) =>
+          cartItem.id === product.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
     } else {
-      setCartItem((prevState) => {
-        return prevState.map((item) => {
-          return item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item;
-        });
-      });
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
   };
 
@@ -58,10 +74,10 @@ const ProductDetails = ({ product }) => {
                 </p>
               </Box>
               <Box className="flex flex-row ">
-                <Box className="p-2 m-2">1</Box>
+                <Box className="p-2 m-2">{product.quantity}</Box>
                 <Box>
                   <Button
-                    onClick={() => addItemsToCart()}
+                    onClick={() => addToCart(product)}
                     variant="outlined"
                     color="secondary"
                   >
