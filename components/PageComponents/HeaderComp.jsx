@@ -24,29 +24,78 @@ import { useRecoilValue } from "recoil";
 const HeaderComp = () => {
   const cartItems = useRecoilValue(cartState);
   return (
-    <header className="flex bg-slate-300 justify-between items-center px-3 drop-shadow-2xl border border-b-black py-4 fixed top-0 w-full z-50">
-      <div className="font-bold text-3xl">
-        <Link href="/">
-          <h1>
-            <span className="text-slate-500">Athor</span>
-            <span className="dark:text-slate-400">Store</span>
-          </h1>
+    <div className="navbar dark:bg-gray-500">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>Home</a>
+            </li>
+            <li>
+              <a>About Us</a>
+              <ul className="p-2">
+                <li>
+                  <a>about</a>
+                </li>
+                <li>
+                  <a>contact</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>Cart</a>
+            </li>
+          </ul>
+        </div>
+        <Link href="/" className="btn btn-ghost normal-case text-xl">
+          AthorStore
         </Link>
       </div>
-      <ul className="flex justify-between items-center">
-        <li className="px-2  text-2xl hover:text-gray-700">
-          <Link href="/home">Home</Link>
-        </li>
-        <li className="px-2  text-2xl hover:text-gray-700">
-          <Link href="/about">About</Link>
-        </li>
-        <li className="px-2  text-2xl hover:text-gray-700">
-          <Link href="/cart">
-            Cart <span>{cartItems.length}</span>
-          </Link>
-        </li>
-      </ul>
-    </header>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <a>Home</a>
+          </li>
+          <li tabIndex={0}>
+            <details>
+              <summary>About Us</summary>
+              <ul className="p-2">
+                <li>
+                  <a>Our Story</a>
+                </li>
+                <li>
+                  <a>Contact</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <Link href="/cart">
+              Cart <span>{cartItems.length}</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 };
 

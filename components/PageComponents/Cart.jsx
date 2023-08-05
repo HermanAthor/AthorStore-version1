@@ -3,12 +3,24 @@
 import { addToCart } from "@/api/utils";
 import { cartState } from "@/context/CartContext/cartContext";
 import { Grid } from "@mui/material";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 const Cart = ({ item }) => {
   const { title, image, quantity, price } = item;
 
   const [cartItems, setCartItems] = useRecoilState(cartState);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    const cartItems = localStorage.getItem("cartItems");
+    if (cartItems) {
+      setCartItems(JSON.parse(cartItems));
+    }
+  }, []);
 
   // Add items to Cart function
   const addToCart = (product) => {
@@ -111,7 +123,6 @@ const Cart = ({ item }) => {
             <button>clear Cart</button>
           </Grid> */}
       </Grid>
-      <div>Checkout</div>
     </>
   );
 };
