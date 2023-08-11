@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 
 const Cart = ({ item }) => {
   const { title, image, quantity, price } = item;
+  const total = price * quantity;
 
   const [cartItems, setCartItems] = useRecoilState(cartState);
 
@@ -62,7 +63,7 @@ const Cart = ({ item }) => {
     <>
       <Grid
         container
-        className="flex w-full bg-white flex-row justify-between items-center content-center md:bg-white md:h-56 mt-1 rounded-lg px-6 py-2 md:p-0"
+        className="flex w-full  flex-row justify-between items-center content-center  md:h-56 mt-1 rounded-lg px-6 py-2 md:p-0 dark:bg-gray-800 dark:text-gray-300"
       >
         <Grid item xs={12} md={2}>
           <div className=" flex md:justify-center md:items-center content-center rounded-lg">
@@ -116,7 +117,7 @@ const Cart = ({ item }) => {
             <p>
               Total <span className="md:hidden">:</span>
             </p>
-            <p>{price * quantity}</p>
+            <p>{total.toFixed(2)}</p>
           </div>
         </Grid>
         {/* <Grid item xs={12} md={2}>
