@@ -5,6 +5,7 @@ import { Container, Grid } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { cartState } from "@/context/CartContext/cartContext";
 import Cart from "../../../components/PageComponents/Cart";
+import axios from "axios";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useRecoilState(cartState);
@@ -27,6 +28,38 @@ const CartPage = () => {
     );
   };
 
+  const handleCheckOut = async () => {
+    try {
+      const response = await axios.post("./api/checkout_session", {
+        cartItems,
+      });
+      console.log(response.data);
+      window.location = response.data.sessionURL;
+    } catch (error) {
+      console.error("Error message:", error.message);
+      console.error("Status code:", error.response?.status);
+      console.error("Response data:", error.response?.data);
+    }
+  };
+
+  // handle checkout function
+
+  const checkOut = async (e) => {
+    e.preventDefault();
+    const { data } = await axios.post(
+      "/api/payment",
+      {
+        priceId: cartItems.price,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    window.location.assign(data);
+  };
+
   return (
     <MainLayout>
       <Container className="mt-24">
@@ -41,7 +74,7 @@ const CartPage = () => {
         {cartItems?.map((item) => {
           return <Cart item={item} />;
         })}
-        <button className="btn">
+        <button onClick={checkOut} className="btn">
           {" "}
           Checkout {"("}
           <span>

@@ -18,20 +18,8 @@ export async function getProductsDetails (productId){
     
 }
 
-export const addToCart = (product) => {
-    const isItemInCart = cartItems.find(
-      (cartItem) => cartItem.id === product.id
-    );
-
-    if (isItemInCart) {
-      setCartItems(
-        cartItems.map((cartItem) =>
-          cartItem.id === product.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    }
-  };
+export async function getHomeProducts(){
+    const res = await fetch('https://dummyjson.com/products')
+    const products = res.json()
+    return await products
+}

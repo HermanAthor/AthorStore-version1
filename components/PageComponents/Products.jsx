@@ -20,22 +20,6 @@ import { useRecoilState } from "recoil";
 export default async function Products() {
   const allProducts = await getProducts();
 
-  // const [cartItem, setCartItem] = useRecoilState(cartState);
-
-  // const addItemsToCart = () => {
-  //   if (cartItem.findIndex((pro) => pro.id === product.id) === -1) {
-  //     setCartItem((prevState) => [...prevState, product]);
-  //   } else {
-  //     setCartItem((prevState) => {
-  //       return prevState.map((item) => {
-  //         return item.id === product.id
-  //           ? { ...item, quantity: item.quantity + 1 }
-  //           : item;
-  //       });
-  //     });
-  //   }
-  // };
-
   return (
     <Container>
       <Box>
@@ -51,13 +35,14 @@ export default async function Products() {
     </Container>
   );
 }
+
 function Product({ product }) {
   return (
     <Grid item xs={12} sm={6} md={4} key={product.id}>
       <Box className="flex flex-col h-full">
         <Card
           variant="outlined"
-          className="mb-4 mt-4 flex flex-col h-full rounded p-4"
+          className="mb-4 mt-4 flex flex-col h-full rounded p-4 dark:bg-[#3e3e42]"
         >
           <CardMedia
             component="img"

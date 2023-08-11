@@ -5,6 +5,7 @@ import MainLayout from '../../components/LayoutComponents/MainLayout'
 import Footer from '../../components/PageComponents/Footer'
 import Ourstory from '../../components/PageComponents/Ourstory'
 import Testimonials from '../../components/PageComponents/Testmonials'
+import Link from 'next/link'
 
 export default function Home() {
 
@@ -15,7 +16,7 @@ export default function Home() {
           <h4 className='text-1xl m-5 text-gray-700 text-center'>WELCOME TO THE ATHORSTORE</h4>
           <h1 className='text-5xl text-gray-500 text-center'>Let's Bring the Spring to Your Home</h1>
           <div className='flex justify-center items-center mt-8'>
-            <button className='p-4 m-4 rounded-full items-center text-white bg-black px-8'>Shop Now</button>
+            <button className='p-4 m-4 rounded-full items-center text-white bg-black px-8'><Link href="/home">Shop Now</Link></button>
           </div>
         </div>
       </div>
