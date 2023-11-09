@@ -1,24 +1,17 @@
 "use client";
-import { getHomeProducts } from "@/api/utils";
+import { getHomeProducts } from "@/utils/fetchProducts";
 import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   Container,
   Grid,
   IconButton,
   TextField,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import MainLayout from "../LayoutComponents/MainLayout";
 import { Select } from "../customCoponents/Select";
 import SearchIcon from "@mui/icons-material/Search";
-import Link from "next/link";
+import ProductComp from "./ProductComp";
 
 export default function HomeProducts() {
   const [allproducts, setAllProducts] = useState([]);
@@ -91,7 +84,7 @@ export default function HomeProducts() {
                 }
               })
               .map((product) => (
-                <SingleProduct key={product.id} product={product} />
+                <ProductComp key={product.id} product={product} />
               ))
           ) : (
             <div className=" items-center mx-auto my-auto">
@@ -103,70 +96,3 @@ export default function HomeProducts() {
     </MainLayout>
   );
 }
-
-function SingleProduct({ product }) {
-  const { description, title, thumbnail, price, category, id } = product;
-  return (
-    <Grid item xs={12} sm={6} md={4} key={id}>
-      <Box className="flex flex-col h-full">
-        <Card
-          variant="outlined"
-          className="mb-4 mt-4 flex flex-col h-full rounded p-4 dark:bg-[#3e3e42]"
-        >
-          <CardMedia
-            component="img"
-            image={thumbnail}
-            alt={title}
-            height="175"
-            className=" object-contain h-64 w-full"
-          />
-          <CardContent className="flex-grow">
-            <Typography className="m-0 " variant="h6">
-              {title}
-            </Typography>
-            <Typography className="m-0 " variant="body1">
-              {category}
-            </Typography>
-            <Typography variant="body2" className="font-bold">
-              DKK {price}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Link
-              href={`/home/${product.id}`}
-              className="bg-gray-400 hover:bg-gray-500 rounded-full p-2"
-            >
-              View Product
-            </Link>
-            <Box>
-              <Button variant="outlined" color="secondary">
-                Add to Cart
-              </Button>
-            </Box>
-          </CardActions>
-        </Card>
-      </Box>
-    </Grid>
-  );
-}
-
-/*
-
-<div className="container flex mx-auto p-3">
-  <div className="card w-96  glass">
-    <figure className="">
-      <Image src={thumbnail} alt={title} height={175} width={175} />
-    </figure>
-    <div className="card-body">
-      <h2 className="card-title">{title}</h2>
-      <p>{description}</p>
-      <p>DKK {price}</p>
-      <p>{category}</p>
-      <div className="card-actions justify-end">
-        <button className="btn btn-primary">Buy Now</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-*/

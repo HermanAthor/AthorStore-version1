@@ -5,38 +5,39 @@ import { useRecoilState } from "recoil";
 import MainLayout from "../LayoutComponents/MainLayout";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
+import { addToCart } from "@/utils/addToCart";
 
 const ProductDetails = ({ product }) => {
   const [cartItems, setCartItems] = useRecoilState(cartState);
 
-  useEffect(() => {
-    const data = localStorage.getItem("cartItems");
-    if (data) {
-      setCartItems(JSON.parse(data));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const data = localStorage.getItem("cartItems");
+  //   if (data) {
+  //     setCartItems(JSON.parse(data));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  // }, [cartItems]);
 
-  const addToCart = (product) => {
-    const isItemInCart = cartItems.find(
-      (cartItem) => cartItem.id === product.id
-    );
+  // const addToCart = (product) => {
+  //   const isItemInCart = cartItems.find(
+  //     (cartItem) => cartItem.id === product.id
+  //   );
 
-    if (isItemInCart) {
-      setCartItems(
-        cartItems.map((cartItem) =>
-          cartItem.id === product.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    }
-  };
+  //   if (isItemInCart) {
+  //     setCartItems(
+  //       cartItems.map((cartItem) =>
+  //         cartItem.id === product.id
+  //           ? { ...cartItem, quantity: cartItem.quantity + 1 }
+  //           : cartItem
+  //       )
+  //     );
+  //   } else {
+  //     setCartItems([...cartItems, { ...product, quantity: 1 }]);
+  //   }
+  // };
 
   return (
     <MainLayout>
@@ -77,7 +78,7 @@ const ProductDetails = ({ product }) => {
                 <Box className="p-2 m-2">{product.quantity}</Box>
                 <Box>
                   <Button
-                    onClick={() => addToCart(product)}
+                    onClick={() => addToCart(product, cartItems, setCartItems)}
                     variant="outlined"
                     color="secondary"
                   >

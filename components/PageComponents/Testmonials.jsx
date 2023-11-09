@@ -2,12 +2,12 @@
 import { Carousel } from "@mantine/carousel";
 import { testimonyData } from "./testimonyData";
 //import { useMediaQuery } from '@mantine/hooks';
-import Autoplay from "embla-carousel-autoplay";
+//import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 const Testimonials = () => {
   //const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
-  const autoplay = useRef(Autoplay({ delay: 2000 }));
+  //const autoplay = useRef(Autoplay({ delay: 2000 }));
 
   return (
     <>
@@ -22,9 +22,9 @@ const Testimonials = () => {
         align="start"
         slidesToScroll={2}
         loop
-        plugins={[autoplay.current]}
-        onMouseEnter={autoplay.current.stop}
-        onMouseLeave={autoplay.current.reset}
+        // plugins={[autoplay.current]}
+        // onMouseEnter={autoplay.current.stop}
+        // onMouseLeave={autoplay.current.reset}
         className="container px-4 mx-auto py-24"
       >
         {testimonialsCards}

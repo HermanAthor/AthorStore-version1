@@ -16,8 +16,6 @@
     "@mui/material": "^5.14.4",
     "@stripe/stripe-js": "^1.54.2",
     "axios": "^1.4.0",
-    "embla-carousel-autoplay": "^8.0.0-rc11",
-    "embla-carousel-react": "^8.0.0-rc11",
     "eslint": "^8.43.0",
     "next": "13.4.7",
     "prettier": "^2.8.8",

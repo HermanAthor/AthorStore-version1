@@ -1,6 +1,5 @@
 "use client";
 
-import { addToCart } from "@/api/utils";
 import { cartState } from "@/context/CartContext/cartContext";
 import { Grid } from "@mui/material";
 import { useEffect } from "react";
@@ -9,6 +8,12 @@ import { useRecoilState } from "recoil";
 const Cart = ({ item }) => {
   const { title, image, quantity, price } = item;
   const total = price * quantity;
+  let photo = "";
+  if (image) {
+    photo = image;
+  } else {
+    photo = item.thumbnail;
+  }
 
   const [cartItems, setCartItems] = useRecoilState(cartState);
 
@@ -69,7 +74,7 @@ const Cart = ({ item }) => {
           <div className=" flex md:justify-center md:items-center content-center rounded-lg">
             <img
               className="h-56 w-full md:w-56 object-contain rounded-lg"
-              src={image}
+              src={photo}
               alt="shoe"
             />
           </div>
