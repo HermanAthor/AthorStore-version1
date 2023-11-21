@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { cartState } from "@/context/CartContext/cartContext";
 import Cart from "../../../components/PageComponents/Cart";
 import axios from "axios";
-import getStripePromise from "@/utils/stripe";
+//import getStripePromise from "@/utils/stripe";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useRecoilState(cartState);
@@ -30,21 +30,24 @@ const CartPage = () => {
   };
 
   // New handle stripe checkOut
-
-  const handleCheckout = async () => {
-    const stripe = await getStripePromise();
-    const response = await fetch("/api/payment/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      cache: "no-cache",
-      body: JSON.stringify(cartItems),
-    });
-
-    const data = await response.json();
-    if (data.session) {
-      stripe?.redirectToCheckout({ sessionId: data.session.id });
-    }
+  const handleCheckout = () => {
+    alert("Sorry, You cant checkout right now but we are working on it");
   };
+
+  // const handleCheckout = async () => {
+  //   const stripe = await getStripePromise();
+  //   const response = await fetch("/api/payment/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     cache: "no-cache",
+  //     body: JSON.stringify(cartItems),
+  //   });
+
+  //   const data = await response.json();
+  //   if (data.session) {
+  //     stripe?.redirectToCheckout({ sessionId: data.session.id });
+  //   }
+  // };
 
   return (
     <MainLayout>
