@@ -42,7 +42,7 @@ export default function HomeProducts() {
                 defaultValue={search}
                 label={search}
                 placeholder="Search"
-                className="w-full dark:bg-[#3e3e42] dark:text-gray-400"
+                className="w-full dark:bg-[#121213] dark:text-gray-400"
                 sx={{ borderRadius: "50px" }}
                 InputProps={{
                   endAdornment: (
